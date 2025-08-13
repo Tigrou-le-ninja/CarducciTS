@@ -153,6 +153,7 @@
           index = i ;
         }
       });
+      index--; // Debug - TS : L'index ne se décrémentait pas, ce qui empêchait l'affichage de l'image précédente
       next =
         imagesCollection[index] ||
         imagesCollection[imagesCollection.length - 1];
@@ -192,6 +193,7 @@
           index = i;
         }
       });
+      index++; // Debug - TS : L'index ne s'incrémentait pas, ce qui empêchait l'affichage de l'image suivante
       next = imagesCollection[index] || imagesCollection[0];
       $(".lightboxImage").attr("src", $(next).attr("src"));
     },
@@ -240,7 +242,7 @@
         return;
       }
       $(".active-tag").removeClass("active active-tag");
-      $(this).addClass("active-tag");
+      $(this).addClass("active-tag active"); // Debug - TS : La classe "active" n'était pas ajoutée, ce qui empêchait le bon affichage du filtre actif
 
       var tag = $(this).data("images-toggle");
 
